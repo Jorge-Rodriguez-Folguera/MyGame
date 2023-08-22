@@ -8,10 +8,12 @@ public class CharacterMovement : MonoBehaviour
     private float Vertical;
     private Rigidbody2D Rigidbody2D;
     public float moveSpeed = 5f;
+    private Animator Animator;
     // Start is called before the first frame update
     void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -19,6 +21,8 @@ public class CharacterMovement : MonoBehaviour
     {
         Horizontal = Input.GetAxisRaw("Horizontal");//Detectamos si pulsa A o D y movemos el personaje a la izquierda si pulsas A o a la derecha si pulsas D
         Vertical = Input.GetAxisRaw("Vertical");//Detectamos si pulsa W o S y movemos el personaje a arriba si pulsas W o a abajo si pulsas S
+        Animator.SetFloat("Horizontal", Horizontal);
+        Animator.SetFloat("Vertical", Vertical);
     }
 
     private void FixedUpdate()

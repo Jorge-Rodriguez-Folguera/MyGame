@@ -21,13 +21,13 @@ public class CharacterMovement : MonoBehaviour
     {
         Horizontal = Input.GetAxisRaw("Horizontal");//Detectamos si pulsa A o D y movemos el personaje a la izquierda si pulsas A o a la derecha si pulsas D
         Vertical = Input.GetAxisRaw("Vertical");//Detectamos si pulsa W o S y movemos el personaje a arriba si pulsas W o a abajo si pulsas S
-        Animator.SetFloat("Horizontal", Horizontal);
-        Animator.SetFloat("Vertical", Vertical);
+        
     }
 
     private void FixedUpdate()
     {
-
+        Animator.SetInteger("Horizontal", (int)(Horizontal));
+        Animator.SetInteger("Vertical", (int)(Vertical));
         Vector2 movement = new Vector2(Horizontal, Vertical) * moveSpeed * Time.deltaTime;
         Rigidbody2D.MovePosition(Rigidbody2D.position + movement);
     }
